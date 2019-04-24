@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    link(rel="stylesheet",type="text/css",href="lib/bootstrap.min.css")
+    link(rel="stylesheet",type="text/css",href="lib/fa/css/font-awesome.min.css")
+    link(rel="stylesheet",type="text/css",href="index.css")
+  body
+    .row.m-auto(style="max-width:1024px")
+      .col
+        #root.box: .inner
+          .head
+            .bar
+              .time 3:31 PM
+            .title LINE UI1 team (4)
+          .content
+            #info-sample.info: .inner Kirby joined the group.
+
+            #talk-sample.talk
+              .avatar
+              .inner
+                .name suhee
+                .bubble Let's go to lunch early today. I'm so hungry I can't concentrate anymore.
+              .time 12:19 PM
+          .foot
+            .icon(style="margin:2px 5px 0 0"): svg(xmlns="http://www.w3.org/2000/svg",viewBox="0 0 34 34")
+              path(d="M 17 6 L 17 28 M6 17 L 28 17",fill="none",stroke="#8385a4",stroke-width="3")
+            .icon: .fa.fa-smile-o
+            input
+            .send: .fa.fa-microphone
+      .col
+        br
+        br
+        .form-group
+          label Name
+          input#input-name.form-control(placeholder="Speak Name")
+        .form-group
+          label Content
+          textarea#input-msg.form-control(rows="2",placeholder="What to say?")
+        .form-group
+          label Avatar
+          br
+          #input-avatar.avatars
+            each n in [1,2,3,4,5,6,7,8,9]
+              .avatar(class=(n==1?"active":""),data-idx=n,style="background-image:url(avatar/" + n + ".jpg)")
+        .form-group
+          .custom-control.custom-checkbox
+            input#check-join.custom-control-input(type="checkbox")
+            label.custom-control-label(for="check-join") Show Join Hint
+        #input-send.btn.btn-primary Send!
+        hr
+        .form-group
+          label Group Name
+          input#group-name.form-control(placeholder="Group Name")
+        //-#output.btn.btn-primary Generate PNG
+
+  script(src="lib/bootstrap-native-v4.min.js")
+  script(src="index.js")
