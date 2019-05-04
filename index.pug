@@ -21,6 +21,11 @@ html
                 .name suhee
                 .bubble Let's go to lunch early today. I'm so hungry I can't concentrate anymore.
               .time 12:19 PM
+            #talk-sample-self.talk.float-right
+              .time 12:19 PM
+              .inner
+                .bubble.rev Let's go to lunch early today. I'm so hungry I can't concentrate anymore.
+
           .foot
             .icon(style="margin:2px 5px 0 0"): svg(xmlns="http://www.w3.org/2000/svg",viewBox="0 0 34 34")
               path(d="M 17 6 L 17 28 M6 17 L 28 17",fill="none",stroke="#8385a4",stroke-width="3")
@@ -42,10 +47,21 @@ html
           #input-avatar.avatars
             each n in [1,2,3,4,5,6,7,8,9]
               .avatar(class=(n==1?"active":""),data-idx=n,style="background-image:url(avatar/" + n + ".jpg)")
-        .form-group
-          .custom-control.custom-checkbox
-            input#check-join.custom-control-input(type="checkbox")
-            label.custom-control-label(for="check-join") Show Join Hint
+            .avatar.upload.text-center(style="line-height: 40px")
+              i.fa.fa-upload
+              input#avatar-upload(type="file")
+
+        .row
+          .col
+            .form-group
+              .custom-control.custom-checkbox
+                input#check-self.custom-control-input(type="checkbox")
+                label.custom-control-label(for="check-self") Sender
+          .col
+            .form-group
+              .custom-control.custom-checkbox
+                input#check-join.custom-control-input(type="checkbox")
+                label.custom-control-label(for="check-join") Show Join Hint
         #input-send.btn.btn-primary Send!
         hr
         .form-group

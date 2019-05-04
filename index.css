@@ -64,6 +64,7 @@
 }
 .content .talk {
   margin-bottom: 15px;
+  clear: both;
 }
 .content .name {
   margin-bottom: 5px;
@@ -76,6 +77,9 @@
   min-height: 61px;
   font-size: 1.15em;
   line-height: 1.1em;
+}
+.content .bubble.rev {
+  padding: 20px 30px 20px 20px;
 }
 .content .time {
   font-size: 0.85em;
@@ -149,7 +153,8 @@
   font-size: 24px;
 }
 #talk-sample,
-#info-sample {
+#info-sample,
+#talk-sample-self {
   display: none;
 }
 .avatar {
@@ -161,9 +166,29 @@
   background-size: cover;
 }
 .avatars .avatar {
-  margin-right: 5px;
+  margin: 0 5px 5px 0;
   cursor: pointer;
 }
 .avatars .avatar.active {
   outline: 2px solid #f0f;
+}
+.avatar {
+  position: relative;
+  overflow: hidden;
+}
+.avatar i {
+  position: relative;
+  z-index: 1;
+}
+.avatar input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  opacity: 0.01;
+}
+.avatar ::-webkit-file-upload-button {
+  cursor: pointer;
+  height: 100%;
+  border: 0;
 }
