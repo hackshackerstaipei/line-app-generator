@@ -1,3 +1,4 @@
+(font) <- xfl.load "https://plotdb.github.io/xl-fontset/alpha/王漢宗細黑/", {}, _
 paths = [
   """M40.936,0C31.91,0,23.812,3.958,18.27,10.227c-5.781,0.615-12.91-0.888-18.156-6.496
   c0,8.808,4.914,14.042,11.761,18.126c-0.769,2.666-1.189,5.48-1.189,8.394"""
@@ -37,6 +38,7 @@ bubblify = (n, rev) ->
   box = n.getBoundingClientRect!
   n.style.backgroundImage = "url(#{get-bubble box.width, box.height, rev})"
 
+local = text: ""
 document.querySelector(\#input-send).addEventListener \click, ->
   cs = document.querySelector(\#check-self)
   talk = document.querySelector("\#talk-sample#{if cs.checked => '-self' else ''}").cloneNode true
@@ -50,6 +52,9 @@ document.querySelector(\#input-send).addEventListener \click, ->
   time.innerText = "#h:#m PM"
   if !cs.checked => name.innerText = document.querySelector(\#input-name).value or "Unnamed"
   bubble.innerText = document.querySelector(\#input-msg).value or "..."
+  local.text += (name.innerText + bubble.innerText)
+  font.sync local.text
+  conv.classList.add font.className
   cj = document.querySelector(\#check-join)
   if cj.checked =>
     info = document.querySelector('#info-sample').cloneNode true
