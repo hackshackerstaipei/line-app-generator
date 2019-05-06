@@ -60,7 +60,7 @@ xfl.load("https://plotdb.github.io/xl-fontset/alpha/王漢宗細黑/", {}, funct
       name.innerText = document.querySelector('#input-name').value || "Unnamed";
     }
     bubble.innerText = document.querySelector('#input-msg').value || "...";
-    local.text += name.innerText + bubble.innerText;
+    local.text += (name ? name.innerText : '') + bubble.innerText;
     font.sync(local.text);
     conv.classList.add(font.className);
     cj = document.querySelector('#check-join');

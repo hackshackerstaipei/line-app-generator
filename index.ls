@@ -52,7 +52,7 @@ document.querySelector(\#input-send).addEventListener \click, ->
   time.innerText = "#h:#m PM"
   if !cs.checked => name.innerText = document.querySelector(\#input-name).value or "Unnamed"
   bubble.innerText = document.querySelector(\#input-msg).value or "..."
-  local.text += (name.innerText + bubble.innerText)
+  local.text += ((if name => name.innerText else '')+ bubble.innerText)
   font.sync local.text
   conv.classList.add font.className
   cj = document.querySelector(\#check-join)
