@@ -40,6 +40,7 @@ bubblify = (n, rev) ->
 
 local = text: ""
 document.querySelector(\#input-send).addEventListener \click, ->
+  root = document.querySelector(\#root)
   cs = document.querySelector(\#check-self)
   talk = document.querySelector("\#talk-sample#{if cs.checked => '-self' else ''}").cloneNode true
   talk.setAttribute \id, null
@@ -52,9 +53,13 @@ document.querySelector(\#input-send).addEventListener \click, ->
   time.innerText = "#h:#m PM"
   if !cs.checked => name.innerText = document.querySelector(\#input-name).value or "Unnamed"
   bubble.innerText = document.querySelector(\#input-msg).value or "..."
-  local.text += ((if name => name.innerText else '')+ bubble.innerText)
+  local.text += (
+    ((if name => name.innerText else '') +
+    bubble.innerText) +
+    document.querySelector('.head .title').innerText
+  )
   font.sync local.text
-  conv.classList.add font.className
+  root.classList.add font.className
   cj = document.querySelector(\#check-join)
   if cj.checked =>
     info = document.querySelector('#info-sample').cloneNode true

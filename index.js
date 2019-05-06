@@ -39,7 +39,8 @@ xfl.load("https://plotdb.github.io/xl-fontset/alpha/王漢宗細黑/", {}, funct
     text: ""
   };
   document.querySelector('#input-send').addEventListener('click', function(){
-    var cs, talk, conv, name, avatar, time, bubble, ref$, h, m, cj, info, a, url;
+    var root, cs, talk, conv, name, avatar, time, bubble, ref$, h, m, cj, info, a, url;
+    root = document.querySelector('#root');
     cs = document.querySelector('#check-self');
     talk = document.querySelector("#talk-sample" + (cs.checked ? '-self' : '')).cloneNode(true);
     talk.setAttribute('id', null);
@@ -60,9 +61,9 @@ xfl.load("https://plotdb.github.io/xl-fontset/alpha/王漢宗細黑/", {}, funct
       name.innerText = document.querySelector('#input-name').value || "Unnamed";
     }
     bubble.innerText = document.querySelector('#input-msg').value || "...";
-    local.text += (name ? name.innerText : '') + bubble.innerText;
+    local.text += ((name ? name.innerText : '') + bubble.innerText) + document.querySelector('.head .title').innerText;
     font.sync(local.text);
-    conv.classList.add(font.className);
+    root.classList.add(font.className);
     cj = document.querySelector('#check-join');
     if (cj.checked) {
       info = document.querySelector('#info-sample').cloneNode(true);
